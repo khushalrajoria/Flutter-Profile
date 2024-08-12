@@ -1,0 +1,14 @@
+String navHome = "assets/nav_home.svg";
+String navContact = "assets/nav_contact.svg";
+String navTime = "assets/nav_time.svg";
+String navPortfolio = "assets/nav_portfolio.svg";
+String navGroup = "assets/nav_group.svg";
+String hanuman="assets/hanuman.png";
+String travel="assets/travel.png";
+String catalog="assets/catalog.png";
+String dugout="assets/dugout.jpg";
+String note="assets/notechat.png";
+String movie="assets/movie.png";
+String mascot="assets/Mascot1.png";
+String pinckcity="assets/pinkcity3.jpg";
+String Cotocon="assets/Cotocong.png";

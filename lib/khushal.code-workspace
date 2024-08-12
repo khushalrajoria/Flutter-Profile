@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "khushal",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
+}
