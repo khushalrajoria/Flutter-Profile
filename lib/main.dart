@@ -15,7 +15,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 bool mode=false;
 
@@ -53,7 +53,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   late TabController _tabController;
   int selectedMenuIndex = 0;
-  // final databaseRef = FirebaseDatabase.instance.reference().child("Portfolio");
   @override
   void initState() {
     super.initState();
