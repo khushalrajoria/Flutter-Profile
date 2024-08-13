@@ -181,7 +181,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
         ),
         height: 100,
         alignment: Alignment.center,
-        child: Text(title, style: mode ? darkbodyTextStyle.copyWith(fontWeight: FontWeight.w800,color: Colors.white) : bodyTextStyle.copyWith(fontWeight: FontWeight.w800)),
+        child: Text(title, style: mode ? darkbodyTextStyle.copyWith(fontWeight: FontWeight.w800,color: Colors.white,fontSize: 18) : bodyTextStyle.copyWith(fontWeight: FontWeight.w800,color: Colors.white,fontSize: 18)),
       ),
     );
   }
