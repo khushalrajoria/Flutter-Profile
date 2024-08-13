@@ -24,6 +24,9 @@ class _PortfolioPageState extends State<PortfolioPage> {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         }
+        if (snapshot.hasError) {
+          return const Center(child: Text("Error fetching portfolio items"));
+        }
         if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
           return const Center(child: Text("No portfolio items found"));
         }
@@ -44,14 +47,17 @@ class _PortfolioPageState extends State<PortfolioPage> {
               Text("Click to see projects", style: mode ? darkbodyTextStyle : bodyTextStyle),
               Wrap(
                 children: portfolioDocs.map<Widget>((doc) {
-                  List<Color> colors = (doc['colors'] as List<dynamic>)
-                      .map((colorString) => Color(int.parse(colorString)))
-                      .toList();
+                  // Safely parse the colors
+                  List<Color> colors = (doc['colors'] as List<dynamic>).map((colorString) {
+                    int? colorValue = int.tryParse(colorString);
+                    return colorValue != null ? Color(colorValue) : Colors.grey;
+                  }).toList();
 
-                  List<String> titles = List<String>.from(doc['titles']);
-                  List<String> images = List<String>.from(doc['images']);
-                  String title = doc['title'];
-                  String description = doc['description'];
+                  // Safely extract titles and images
+                  List<String> titles = List<String>.from(doc['titles'] ?? []);
+                  List<String> images = List<String>.from(doc['images'] ?? []);
+                  String title = doc['title'] ?? 'No Title';
+                  String description = doc['description'] ?? 'No Description';
 
                   return _itemWidget(
                     context,
@@ -80,105 +86,102 @@ class _PortfolioPageState extends State<PortfolioPage> {
     double width,
     String description,
   ) {
-    return Expanded(
-      flex: 1,
-      child: InkWell(
-        onTap: () {
-          show = true;
-          showModalBottomSheet<void>(
-            barrierColor: const Color.fromARGB(180, 158, 158, 158),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(23),
-            ),
-            elevation: .5,
-            context: context,
-            builder: (BuildContext context) {
-              return SingleChildScrollView(
-                child: Container(
-                  height: 720,
-                  color: mode ? backgrounddark : backgroundLight,
-                  width: width,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const SizedBox(height: 20),
-                      SizedBox(
-                        height: 250,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: titles.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Column(
-                              children: [
-                                Stack(
-                                  children: [
-                                    Container(
-                                      height: 200,
-                                      width: width,
-                                      alignment: Alignment.center,
-                                      child: Image.network(images[index], fit: BoxFit.contain),
-                                    ),
-                                    Positioned(
-                                      top: 5,
-                                      right: 5,
-                                      child: Container(
-                                        height: 20,
-                                        width: 40,
-                                        decoration: BoxDecoration(
-                                          color: const Color.fromARGB(123, 0, 0, 0),
-                                          borderRadius: BorderRadius.circular(30),
-                                        ),
-                                        child: Center(
-                                          child: Text(
-                                            "${index + 1}/${titles.length}",
-                                            style: const TextStyle(color: Colors.white),
-                                          ),
+    return InkWell(
+      onTap: () {
+        show = true;
+        showModalBottomSheet<void>(
+          barrierColor: const Color.fromARGB(180, 158, 158, 158),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(23),
+          ),
+          elevation: .5,
+          context: context,
+          builder: (BuildContext context) {
+            return SingleChildScrollView(
+              child: Container(
+                height: 720,
+                color: mode ? backgrounddark : backgroundLight,
+                width: width,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      height: 250,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: titles.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Column(
+                            children: [
+                              Stack(
+                                children: [
+                                  Container(
+                                    height: 200,
+                                    width: width,
+                                    alignment: Alignment.center,
+                                    child: Image.network(images[index], fit: BoxFit.contain),
+                                  ),
+                                  Positioned(
+                                    top: 5,
+                                    right: 5,
+                                    child: Container(
+                                      height: 20,
+                                      width: 40,
+                                      decoration: BoxDecoration(
+                                        color: const Color.fromARGB(123, 0, 0, 0),
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          "${index + 1}/${titles.length}",
+                                          style: const TextStyle(color: Colors.white),
                                         ),
                                       ),
                                     ),
-                                  ],
-                                ),
-                                const SizedBox(height: 10),
-                                SizedBox(
-                                  width: width,
-                                  child: Center(
-                                    child: Text(
-                                      titles[index],
-                                      style: mode ? darksubHeaderTextStyle : subHeaderTextStyle,
-                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              SizedBox(
+                                width: width,
+                                child: Center(
+                                  child: Text(
+                                    titles[index],
+                                    style: mode ? darksubHeaderTextStyle : subHeaderTextStyle,
                                   ),
                                 ),
-                              ],
-                            );
-                          },
-                        ),
+                              ),
+                            ],
+                          );
+                        },
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 10.0, top: 5),
-                        child: Text(description, style: mode ? darkbodyTextStyle : bodyTextStyle),
-                      ),
-                    ],
-                  ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0, top: 5),
+                      child: Text(description, style: mode ? darkbodyTextStyle : bodyTextStyle),
+                    ),
+                  ],
                 ),
-              );
-            },
-          );
-        },
-        child: Container(
-          margin: const EdgeInsets.all(3),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            gradient: LinearGradient(
-              colors: colors,
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
+              ),
+            );
+          },
+        );
+      },
+      child: Container(
+        margin: const EdgeInsets.all(3),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          gradient: LinearGradient(
+            colors: colors.isNotEmpty ? colors : [Colors.grey, Colors.grey],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
           ),
-          height: 100,
-          alignment: Alignment.center,
-          child: Text(title, style: mode ? darkbodyTextStyle : bodyTextStyle),
         ),
+        height: 100,
+        alignment: Alignment.center,
+        child: Text(title, style: mode ? darkbodyTextStyle : bodyTextStyle),
       ),
     );
   }
