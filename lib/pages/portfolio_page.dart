@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
 import '../utils/AppColors.dart';
@@ -170,8 +171,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
                         padding: const EdgeInsets.only(left: 10.0, top: 5),
                         child: InkWell(
                           onTap: () {
-                            // Handle GitHub link tap
-                            launchURL(githubLink);
+                            _launchUrl(githubLink);
                           },
                           child: Text(
                             'View on GitHub',
@@ -206,10 +206,14 @@ class _PortfolioPageState extends State<PortfolioPage> {
     );
   }
 
-  void launchURL(String url) {
-    // Handle URL launch using the url_launcher package or similar
+  Future<void> _launchUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }
+
 
 
 /*
