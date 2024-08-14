@@ -173,10 +173,11 @@ class _PortfolioPageState extends State<PortfolioPage> {
                           onTap: () {
                             _launchUrl(githubLink);
                           },
-                          child: Text(
-                            'View on GitHub',
+                          child: const Text(
+                            '\nView on GitHub',
                             style: TextStyle(
                               color: Colors.blue,
+                              fontSize: 16,
                               decoration: TextDecoration.underline,
                             ),
                           ),
