@@ -53,11 +53,12 @@ class _PortfolioPageState extends State<PortfolioPage> {
                     return colorValue != null ? Color(colorValue) : Colors.grey;
                   }).toList();
 
-                  // Safely extract titles and images
+                  // Safely extract titles, images, and githubLink
                   List<String> titles = List<String>.from(doc['titles'] ?? []);
                   List<String> images = List<String>.from(doc['images'] ?? []);
                   String title = doc['title'] ?? 'No Title';
                   String description = doc['description'] ?? 'No Description';
+                  String githubLink = doc['githubLink'] ?? '';
 
                   return _itemWidget(
                     context,
@@ -67,6 +68,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
                     images,
                     width,
                     description,
+                    githubLink,
                   );
                 }).toList(),
               ),
@@ -85,6 +87,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
     List<String> images,
     double width,
     String description,
+    String githubLink,
   ) {
     return InkWell(
       onTap: () {
@@ -162,6 +165,23 @@ class _PortfolioPageState extends State<PortfolioPage> {
                       padding: const EdgeInsets.only(left: 10.0, top: 5),
                       child: Text(description, style: mode ? darkbodyTextStyle : bodyTextStyle),
                     ),
+                    if (githubLink.isNotEmpty) 
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0, top: 5),
+                        child: InkWell(
+                          onTap: () {
+                            // Handle GitHub link tap
+                            launchURL(githubLink);
+                          },
+                          child: Text(
+                            'View on GitHub',
+                            style: TextStyle(
+                              color: Colors.blue,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ),
+                      ),
                   ],
                 ),
               ),
@@ -185,7 +205,12 @@ class _PortfolioPageState extends State<PortfolioPage> {
       ),
     );
   }
+
+  void launchURL(String url) {
+    // Handle URL launch using the url_launcher package or similar
+  }
 }
+
 
 /*
   So what i have done to integrate firebase is to first make a project in firebase with flutter option
