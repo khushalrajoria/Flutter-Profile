@@ -174,7 +174,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
                             _launchUrl(githubLink);
                           },
                           child: const Text(
-                            '\nView on GitHub',
+                            '\nView GitHub',
                             style: TextStyle(
                               color: Colors.blue,
                               fontSize: 16,
