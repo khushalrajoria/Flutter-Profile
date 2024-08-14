@@ -103,7 +103,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
           builder: (BuildContext context) {
             return SingleChildScrollView(
               child: Container(
-                height: 720,
+                height: 620,
                 color: mode ? backgrounddark : backgroundLight,
                 width: width,
                 child: Column(
