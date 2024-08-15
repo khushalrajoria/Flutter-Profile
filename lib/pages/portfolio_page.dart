@@ -6,7 +6,7 @@ import '../main.dart';
 import '../utils/AppColors.dart';
 import '../utils/common_string.dart';
 import '../utils/text_style.dart';
-import '../widgets/skeleton.dart'; // Import the Skeleton widget
+import '../widgets/skeleton.dart'; 
 
 class PortfolioPage extends StatefulWidget {
   const PortfolioPage({super.key});
@@ -26,7 +26,6 @@ class _PortfolioPageState extends State<PortfolioPage> {
       future: FirebaseFirestore.instance.collection('portfolio').get(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          // Display skeleton loaders while waiting for data
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -67,13 +66,10 @@ class _PortfolioPageState extends State<PortfolioPage> {
               Text("Click to see projects", style: mode ? darkbodyTextStyle : bodyTextStyle),
               Wrap(
                 children: portfolioDocs.map<Widget>((doc) {
-                  // Safely parse the colors
                   List<Color> colors = (doc['colors'] as List<dynamic>).map((colorString) {
                     int? colorValue = int.tryParse(colorString);
                     return colorValue != null ? Color(colorValue) : Colors.grey;
                   }).toList();
-
-                  // Safely extract titles, images, and githubLink
                   List<String> titles = List<String>.from(doc['titles'] ?? []);
                   List<String> images = List<String>.from(doc['images'] ?? []);
                   String title = doc['title'] ?? 'No Title';
