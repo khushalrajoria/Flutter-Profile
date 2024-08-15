@@ -38,7 +38,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
                 const Skeleton(height: 20, width: double.infinity), 
                 const SizedBox(height: 20),
                 Wrap(
-                  children: List.generate(6, (index) => PortfolioItemSkeleton(width: width)).toList(),
+                  children: List.generate(5, (index) => PortfolioItemSkeleton(width: width)).toList(),
                 ),
               ],
             ),
