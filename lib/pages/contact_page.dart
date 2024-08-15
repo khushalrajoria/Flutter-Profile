@@ -16,17 +16,11 @@ class ContactPage extends StatelessWidget {
         children: <Widget>[
           Text("Contact Details",style:mode? darkheaderTextStyle:headerTextStyle,),
           const SizedBox(height: 20,),
-          _itemWidget("Email","rajoriakhushal@gmail.com"),
-          _itemWidget("Mobile","+91 8112202713"),
-          const SizedBox(height: 15,),
-          InkWell(
-            onTap: (){
-              String url ="";
-              final Uri uri = Uri.parse(url);
-              launchUrl(uri);
-            },
-            child: Text("Github",style:TextStyle(fontSize: 16,color: Colors.blue.shade700),)),
-          const SizedBox(height: 235,),
+          _itemWidget("https://mail.google.com/mail/u/0/#inbox","Email","rajoriakhushal@gmail"),
+          _itemWidget("tel:8112202713","Mobile","Dial Here"),
+          _itemWidget("https://github.com/khushalrajoria","Github","@KhushalRajoria"),
+          _itemWidget("https://www.linkedin.com/in/khushal-rajoria-cse/","Linkdin","@KhushalRajoriaCse"),
+          const SizedBox(height: 170,),
           Align(
             alignment: Alignment.bottomRight,
             child: Lottie.asset('assets/message.json')),
@@ -34,24 +28,22 @@ class ContactPage extends StatelessWidget {
       ),
     );
   }
-  Widget _itemWidget(title,value){
-    return Container(
-      margin: const EdgeInsets.only(top:15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(title,style:mode? darksubHeaderTextStyle:subHeaderTextStyle,),
-          Text(value, style:mode? darksubHeaderTextStyle:subHeaderTextStyle,),
-        ],
-      ),
+  Widget _itemWidget(link,name,id){
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+       const SizedBox(height: 15,),
+          Text(name,style:mode? darksubHeaderTextStyle:subHeaderTextStyle.copyWith(fontSize: 18),),
+          InkWell(
+            onTap: (){
+              String url =link;
+              final Uri uri = Uri.parse(url);
+              launchUrl(uri);
+            },
+            child: Text(id,style:const TextStyle(fontSize: 18,color: Colors.blue),)),
+      ],
     );
   }
 
-  
-  Future<void> _launchUrl(String url) async {
-    final Uri uri = Uri.parse(url);
-    if (!await launchUrl(uri)) {
-      throw Exception('Could not launch $url');
-    }
-  }
+ 
 }
