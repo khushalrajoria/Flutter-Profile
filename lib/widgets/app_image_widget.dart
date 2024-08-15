@@ -8,12 +8,11 @@ class AppImageWidget extends StatelessWidget {
   final BoxFit fit;
 
   const AppImageWidget(
-      {Key? key,
+      {super.key,
       required this.imageUrl,
       required this.height,
       required this.width,
-      this.fit = BoxFit.contain})
-      : super(key: key);
+      this.fit = BoxFit.contain});
 
   @override
   Widget build(BuildContext context) {

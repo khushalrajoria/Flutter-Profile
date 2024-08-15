@@ -9,7 +9,7 @@ class AppShimmer extends StatelessWidget {
   static Color shimmerBaseColor = Colors.grey.shade500;
   static Color shimmerHighlightColor = Colors.grey.shade100;
 
-  const AppShimmer({Key? key,  required this.child}) : super(key: key);
+  const AppShimmer({super.key,  required this.child});
 
   @override
   Widget build(BuildContext context) {

@@ -4,7 +4,7 @@ import '../utils/constants.dart';
 
 
 class Skeleton extends StatelessWidget {
-  const Skeleton({Key? key, this.height, this.width}) : super(key: key);
+  const Skeleton({super.key, this.height, this.width});
 
   final double? height, width;
 

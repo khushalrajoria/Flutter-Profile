@@ -148,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                   children: [
                     const HomePage(),
                     const ExperiencePage(),
-                    PortfolioPage(),
+                    const PortfolioPage(),
                     TeamPage(),
                     const ContactPage(),
                   ],
