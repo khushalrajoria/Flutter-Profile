@@ -6,6 +6,7 @@ import '../main.dart';
 import '../utils/AppColors.dart';
 import '../utils/common_string.dart';
 import '../utils/text_style.dart';
+import '../widgets/skeleton.dart'; // Import the Skeleton widget
 
 class PortfolioPage extends StatefulWidget {
   const PortfolioPage({super.key});
@@ -25,7 +26,23 @@ class _PortfolioPageState extends State<PortfolioPage> {
       future: FirebaseFirestore.instance.collection('portfolio').get(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator());
+          // Display skeleton loaders while waiting for data
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(height: 80),
+                const Skeleton(height: 30, width: double.infinity), 
+                const SizedBox(height: 20),
+                const Skeleton(height: 20, width: double.infinity), 
+                const SizedBox(height: 20),
+                Wrap(
+                  children: List.generate(6, (index) => PortfolioItemSkeleton(width: width)).toList(),
+                ),
+              ],
+            ),
+          );
         }
         if (snapshot.hasError) {
           return const Center(child: Text("Error fetching portfolio items"));
@@ -217,6 +234,26 @@ class _PortfolioPageState extends State<PortfolioPage> {
   }
 }
 
+class PortfolioItemSkeleton extends StatelessWidget {
+  final double width;
+
+  const PortfolioItemSkeleton({Key? key, required this.width}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(3),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+        color: Colors.grey.shade300,
+      ),
+      height: 100,
+      // width: (width / 2) - 30,
+      width: double.infinity,
+      child: const Skeleton(height: 100, width: double.infinity),
+    );
+  }
+}
 
 
 /*
