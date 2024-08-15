@@ -21,10 +21,10 @@ class ExperiencePage extends StatelessWidget {
           ),
           _itemWidget("July 2022 - Dec 2022(Practice School)", "-Yakult India Pvt. Ltd(Delhi)\n-Aryan Clean Environment Technologies Pvt. Ltd.(Gurugram)\n-Hughes Systique Corporation Pvt. Ltd.(Delhi)"),
           _itemWidget("12th August 2022", "Worked on a website known as 'Travel Dial', which included: \nHTML\nCSS\nJava Script"),
-          _itemWidget("Dec 2022- Jan 2023", "Worked on a App known as 'Showper', which included:\nFlutter front UI and Ux \npractice purpose along with some function coding"),
+          _itemWidget("Dec 2022 - Jan 2023", "Worked on a App known as 'Showper', which included:\nFlutter front UI and Ux \npractice purpose along with some function coding"),
           _itemWidget("1st Feb 2023", "Worked on a App known as 'DugOut', which included:\nFlutter front end and backEnd"),
           _itemWidget("29th May 2023", "Intern for 'Twidllr', which a tech based start-up which does:\nDigital Brading \nWeb development \nApp development  "),
-          _itemWidget("1th May 2024-1 June 2024", "Freelanced for a client from american express for complete creation of a dating app on Flutter\nWith backend team using nodejs and postgress database"),
+          _itemWidget("1st May 2024-1st June 2024", "Freelanced for a client from american express for complete creation of a dating app on Flutter\nWith backend team using nodejs and postgress database"),
           const SizedBox(
             height: 10,
           ),
