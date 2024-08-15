@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../main.dart';
 import '../utils/text_style.dart';
+import 'package:lottie/lottie.dart';
 
 class ContactPage extends StatelessWidget {
   const ContactPage({super.key});
@@ -16,6 +17,10 @@ class ContactPage extends StatelessWidget {
           const SizedBox(height: 20,),
           _itemWidget("Email","rajoriakhushal@gmail.com"),
           _itemWidget("Mobile","+91 8112202713"),
+          SizedBox(height: 275,),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Lottie.asset('assets/message.json')),
         ],
       ),
     );
@@ -27,7 +32,7 @@ class ContactPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(title,style:mode? darksubHeaderTextStyle:subHeaderTextStyle,),
-          Text(value, style:mode? darkbodyTextStyle:bodyTextStyle,),
+          Text(value, style:mode? darksubHeaderTextStyle:subHeaderTextStyle,),
         ],
       ),
     );
