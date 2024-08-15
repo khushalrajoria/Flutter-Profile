@@ -8,6 +8,8 @@ import '../utils/common_string.dart';
 import '../utils/text_style.dart';
 
 class PortfolioPage extends StatefulWidget {
+  const PortfolioPage({super.key});
+
   @override
   _PortfolioPageState createState() => _PortfolioPageState();
 }
