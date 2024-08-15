@@ -8,11 +8,13 @@ class TeamPage extends StatelessWidget {
   var descriptions =
       "Team DugOut was extensive project with 10 members which included Survery and feedback team, degign and storyborading team , App front end and backEnd team and Machine learning model Team,check more about the app in the portfolio";
   var descriptions1 =
-      "Fling was made as a freelance projects it was made togther with Aditya bansal @aditya.bansal.22cse@bmu.edu.in";
+      "Fling was made as a freelance projects it was made togther with Aditya bansal @aditya.bansal.22cse@bmu";
   var descriptions2 =
       "Travel Dial was created by 3 students group who collectively worked on HTML ,CSS , JavaScript and monogDB database";
   var descriptions3 =
       "Hanuman Traders was a first industry ready project with I made with Prakhar Maheshawri (prakharm2003@gmail.com) on word press";
+  var descriptions4 =
+      "Luminarc was a photo editing app made together with arpit joshi @arpitjoshi333@gmail for a span of 2 months" ;
 
 
   @override
@@ -40,6 +42,7 @@ class TeamPage extends StatelessWidget {
           _itemWidget("FlingTeam", "assets/avtar2.png", descriptions1),
           _itemWidget("TravelDial Team", "assets/avtar3.png", descriptions2),
           _itemWidget("Hanuman Traders Team", "assets/avtar4.png", descriptions3),
+          _itemWidget("Lumiarc", "assets/avtar1.png", descriptions4),
         ],
       ),
     );
