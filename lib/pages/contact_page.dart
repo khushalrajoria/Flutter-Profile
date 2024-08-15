@@ -17,6 +17,7 @@ class ContactPage extends StatelessWidget {
           const SizedBox(height: 20,),
           _itemWidget("Email","rajoriakhushal@gmail.com"),
           _itemWidget("Mobile","+91 8112202713"),
+          // ignore: prefer_const_constructors
           SizedBox(height: 275,),
           Align(
             alignment: Alignment.bottomRight,
