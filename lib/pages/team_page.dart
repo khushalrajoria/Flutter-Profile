@@ -30,7 +30,7 @@ class TeamPage extends StatelessWidget {
             height: 20,
           ),
           Text(
-            "I have worked on both college project as a group and as well as an individual also during my internShip I have worked with an indurstrial firm and communicated with real world clients and had their feedback reflected and made successful statisfying projects ",
+            "I have worked on both college project as a group and as well as an individual also during my internShip I have worked with an indurstrial firm and communicated with real world clients and had their feedback reflected and made successful statisfying projects \nThis section only contains projects that were not made my me alone ",
             style:mode? darkbodyTextStyle:bodyTextStyle,
           ),
           const SizedBox(
