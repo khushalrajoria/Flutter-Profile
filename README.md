@@ -1,6 +1,3 @@
-Here's a GitHub README file for your project:
-
-```markdown
 # Khushal Rajoria Personal Portfolio App
 
 ![Logo](link-to-your-logo.png)
@@ -65,6 +62,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 Thank you for checking out my portfolio app! I hope you find my work interesting, and I look forward to connecting with you.
-```
-
-Be sure to replace placeholders like `link-to-your-logo.png`, `your-username`, `your-repo-name`, and URLs with your actual content.
