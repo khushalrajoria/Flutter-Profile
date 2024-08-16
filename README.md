@@ -1,5 +1,4 @@
-# flutter_application_1
-
+# Cv in an app using flutter
 A new Flutter project.
 
 ## Getting Started
