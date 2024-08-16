@@ -1,6 +1,5 @@
 # Khushal Rajoria Personal Portfolio App
 
-![Logo](link-to-your-logo.png)
 
 Welcome to my personal portfolio app! This app is designed to showcase my work, experience, and skills. It features a clean and intuitive design, with animations and interactive elements to make exploring my projects enjoyable.
 
@@ -23,11 +22,11 @@ Welcome to my personal portfolio app! This app is designed to showcase my work, 
 
 1. **Clone the repository**: 
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/khushalrajoria/Flutter-Profile.git
    ```
 2. **Navigate to the project directory**:
    ```bash
-   cd your-repo-name
+   cd repo-name
    ```
 3. **Install dependencies**:
    ```bash
@@ -38,14 +37,10 @@ Welcome to my personal portfolio app! This app is designed to showcase my work, 
    flutter run
    ```
 
-## Screenshots
-
-![Home Screen](link-to-screenshot.png)
-![Project Details](link-to-screenshot.png)
 
 ## Demo
 
-Check out the live demo [here](link-to-demo).
+Check out the live demo you can download apk in outputs.
 
 ## Contact
 
@@ -54,6 +49,7 @@ Feel free to connect with me:
 - [LinkedIn](your-linkedin-url)
 - [GitHub](your-github-url)
 - [Portfolio Website](your-website-url)
+All these are avaiable in my app
 
 ## License
 
