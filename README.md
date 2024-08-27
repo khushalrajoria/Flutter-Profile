@@ -57,4 +57,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Thank you for checking out my portfolio app! I hope you find my work interesting, and I look forward to connecting with you.
