@@ -48,7 +48,6 @@ Feel free to connect with me:
 
 - [LinkedIn](your-linkedin-url)
 - [GitHub](your-github-url)
-- [Portfolio Website](your-website-url)
 All these are avaiable in my app
 
 ## License
